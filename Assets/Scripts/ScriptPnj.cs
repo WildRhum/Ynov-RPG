@@ -13,10 +13,13 @@ public class ScriptPnj : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
-        int vectorX, vectorY;
-        
-        Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    {        
+        int vectorX, vectorY;                
+                
+        Random rnd = new Random();
+        int random_x = rnd.Next(1);
+        int random_y = rnd.Next(1);
+        Vector2 movement_vector = new Vector2(random_x,random_y);
 
         if (movement_vector != Vector2.zero)
         {
