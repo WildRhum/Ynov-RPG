@@ -17,6 +17,25 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+/*
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(Vector3.right * speed / 5); // On va a droite
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(Vector3.left * speed / 5); // Gauche
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.up * speed / 5);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(Vector3.down * speed / 5);
+        }*/
+
+        // switch chase a faire
 
         if (movement_vector != Vector2.zero)
         {

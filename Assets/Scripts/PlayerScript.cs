@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -31,6 +32,6 @@ public class PlayerScript : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector3.down * speed/5);
-        }      
+        }
     }
 }

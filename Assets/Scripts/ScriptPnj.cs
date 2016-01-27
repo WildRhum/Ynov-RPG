@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
+using System;
 
 public class ScriptPnj : MonoBehaviour {    
     Rigidbody2D rbody;
@@ -14,12 +16,23 @@ public class ScriptPnj : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {        
-        int vectorX, vectorY;                
-                
-        Random rnd = new Random();
-        int random_x = rnd.Next(1);
-        int random_y = rnd.Next(1);
-        Vector2 movement_vector = new Vector2(random_x,random_y);
+        int vectorX, vectorY;
+
+        System.Random random = new System.Random();
+
+        float random_x = 0;
+        float random_y = 0;
+        
+        if(random.Next(100) < 50)
+        {
+            random_x = (float)random.NextDouble() * Math.Abs(1 - (-1)) + (-1);
+        }
+        else
+        {
+            random_y = (float)random.NextDouble() * Math.Abs(1 - (-1)) + (-1);
+        }
+        
+        Vector2 movement_vector = new Vector2(random_x, random_y);
 
         if (movement_vector != Vector2.zero)
         {
