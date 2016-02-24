@@ -40,8 +40,8 @@ public class PlayerScript : MonoBehaviour
         if (movement_vector != Vector2.zero)
         {
             anim.SetBool("walking", true);
-            anim.SetFloat("input_x", movement_vector.x);
-            anim.SetFloat("input_y", movement_vector.y);
+            anim.SetFloat("input_x", (movement_vector.x));
+            anim.SetFloat("input_y", (movement_vector.y));
             nbPas++;
         }
         else
@@ -49,6 +49,6 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("walking", false);
         }
 
-        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime);
+        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime *2);
     }
 }

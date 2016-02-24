@@ -18,6 +18,7 @@ public class ScriptPnj : MonoBehaviour {
     {        
         int vectorX, vectorY;
 
+        /*
         System.Random random = new System.Random();
 
         float random_x = 0;
@@ -46,5 +47,6 @@ public class ScriptPnj : MonoBehaviour {
         }
 
         rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime);
+        */
     }
 }
