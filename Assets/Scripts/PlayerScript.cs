@@ -1,84 +1,54 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerScript : MonoBehaviour
 {
-    int nbPas;
+    int nbPas = 0;
     Rigidbody2D rbody;
     Animator anim;
-    public Text nbPasText;
-    Vector2 movement_vector;
-    int walking;
-
-    void OnGui()
-    {
-        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "Test de message incroyablement fascinant");
-    }
-
     // Use this for initialization
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        nbPas = 0;
-        // nbPasText.text = "";
-        walking = 0;
-        movement_vector = new Vector2();
     }
 
     // Update is called once per frame
     void Update()
-    {        
-        // new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        // Est-il à l'arrêt ?
-        if(movement_vector == Vector2.zero)
+    {
+        Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+/*
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            // Si oui, on regarde s'il appuie
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                movement_vector.x = 1; // On va a droite   
-                nbPas++;
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                movement_vector.x = -1; // Gauche            
-                nbPas++;
-            }
-            else if (Input.GetKey(KeyCode.UpArrow))
-            {
-                movement_vector.y = 1;
-                nbPas++;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                movement_vector.y = -1;
-                nbPas++;
-            }
-            else
-            {
-                anim.SetBool("walking", false);
-            }
+            transform.Translate(Vector3.right * speed / 5); // On va a droite
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(Vector3.left * speed / 5); // Gauche
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.up * speed / 5);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(Vector3.down * speed / 5);
+        }*/
+
+        // switch chase a faire
+
+        if (movement_vector != Vector2.zero)
+        {
+            anim.SetBool("walking", true);
+            anim.SetFloat("input_x", (movement_vector.x));
+            anim.SetFloat("input_y", (movement_vector.y));
+            nbPas++;
         }
         else
         {
-            anim.SetBool("walking", true);
-            if (walking < 60)
-            {
-                anim.SetFloat("input_x", (movement_vector.x));
-                anim.SetFloat("input_y", (movement_vector.y));
+            anim.SetBool("walking", false);
+        }
 
-                // nbPasText = nbPas.ToString();                        
-                rbody.MovePosition(rbody.position + movement_vector / 64);
-                walking++;
-            }
-            else
-            {
-                walking = 0;
-                movement_vector = Vector2.zero;
-            }
-                
-        }                                
+        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime *2);
     }
 }
